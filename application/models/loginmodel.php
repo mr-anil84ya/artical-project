@@ -15,6 +15,17 @@ class loginmodel extends CI_Model
             return false;
         }
     }
+    public function articalList()
+    {
+        // $this->load->library('session');
+        $id=$this->session->userdata('id'); 
+        $q=$this->db->select('article_title')
+                ->from('articles')
+                ->where(['id'=>$id])
+                ->get();
+                return $q->result();
+              
+    }
 }
 
 ?>
