@@ -18,4 +18,12 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+  <?php 
+    if($this->session->userdata('id'))
+    {
+  ?>
+  <a href="<?= base_url('admin/logout'); ?>" class="btn btn-danger">Logout</a>
+  <?php
+    }
+    ?>
 </nav>

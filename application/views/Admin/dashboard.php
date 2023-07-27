@@ -1,7 +1,12 @@
 <?php include('header.php')?>
-<?php print_r($articles);?>
+<!-- <?php print_r($articles);?> -->
 <div class="container">
 <h1>welcome to Admin Dashboard!</h1>
+<?php if($error=$this->session->flashdata('loged_in')): ?>
+      <div class="alert alert-success">
+        <?php echo $error; ?>
+      </div>
+    <?php endif ?>
 <div class="row">
 <table class="table table-striped table-bordered">
   <thead>

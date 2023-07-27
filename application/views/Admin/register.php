@@ -30,8 +30,8 @@
     <?php echo form_error('email',"<div class='text-danger'>","</div>"); ?>
   </div>
   <?php echo form_submit(['type'=>'submit','class'=>'btn btn-primary','value'=>'Submit']); ?>
-  <?php echo form_reset(['type'=>'reset','class'=>'btn btn-danger','value'=>' Reset ']); ?>
-  
+  <?php echo form_reset(['type'=>'reset','class'=>'btn btn-danger','value'=>' Reset ']); ?><br>
+  <span>User Login? <a href="<?php echo site_url('login/index')?>">Sign In</a></span>
 </div>
 <div class="col-lg-3"></div>
 </div>

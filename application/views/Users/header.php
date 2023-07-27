@@ -25,7 +25,7 @@
         <a class="nav-link" href="#">Artical List</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('Admin/login') ?>">Admin Login</a>
+        <a class="nav-link" href="<?php echo site_url('login/index') ?>">Admin Login</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
