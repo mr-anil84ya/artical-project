@@ -29,7 +29,7 @@
   </div>
   <?php echo form_submit(['type'=>'submit','class'=>'btn btn-primary','value'=>'Submit']); ?>
   <?php echo form_reset(['type'=>'reset','class'=>'btn btn-danger','value'=>' Reset ']); ?><br>
-  <span>User Not Register? <a href="<?php echo site_url('admin/register')?>">Sign Up</a></span>
+  <span>User Not Register? <a href="<?php echo site_url('users/register')?>">Sign Up</a></span>
   
 </div>
 <div class="col-lg-3"></div>

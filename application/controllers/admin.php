@@ -22,43 +22,54 @@ class admin extends MY_controller
         return redirect('login');
         
     }
-    public function register()
+   
+    public function adduser()
     {
-        $this->load->view('admin/register');
+        $this->load->view('admin/add_article');
     }
-    public function sendemail()
+    public function delarticles()
     {
-        $this->form_validation->set_rules('uname','Username','required|alpha');
-        $this->form_validation->set_rules('pass','Password','required|max_length[12]');
-        $this->form_validation->set_rules('fname','First Name','required|alpha');
-        $this->form_validation->set_rules('lname','Last Name','required|alpha');
-        $this->form_validation->set_rules('email','Email','required|valid_email|is_unique[users.email]');
-        $this->form_validation->set_error_delimiters('<div class="text-danger">','</div>');
-        if($this->form_validation->run())
+        $id=$this->input->post('id');
+        $this->load->model('loginmodel');
+        if($this->loginmodel->delete_article($id))
         {
-            $this->load->library('email');
-            $this->email->from(set_value('email'),set_value('fname'));
-            $this->email->to("anilmery21@gmail.com");
-            $this->email->subject("Registration Greetings...");
-            $this->email->message("Thank You For Registration!");
-            $this->email->set_newline("/r/n");
-            $this->email->send();
-            if(!$this->email->send())
-            {
-                show_error($this->email->print_debugger());
-            }
-            else
-            {
-                echo "your email has been send!";
-            }
+            $this->session->set_flashdata('delete_article','Article Delete Successfully!');
+            $this->session->set_flashdata('delete_class','alert-info');
         }
         else
         {
-            $this->load->view('admin/register');
+            $this->session->set_flashdata('delete_user','Article Not Delete.. Please Try Again!');
+            $this->session->set_flashdata('delete_class','alert-danger');
         }
-        
+        return redirect('admin/welcome');
         
 
     }
+    public function userValidation()
+    {
+        if($this->form_validation->run('add_article_rules'))
+        {
+            // $this->session->set_flashdata('add_title','Article Added Success!');
+            $post=$this->input->post();
+            $this->load->model('loginmodel');
+            if($this->loginmodel->add_articles($post))
+            {
+                // echo "Inserted";
+                $this->session->set_flashdata('added_msg','Article added Success!');
+                return redirect('admin/welcome');
+            }
+            else
+            {
+                // echo "Not Inserted";
+                $this->session->set_flashdata('added_msg','Article Not added Please Try Again!');
+                return redirect('admin/welcome');
+            }       
+        }
+        else
+        {
+            $this->load->view('admin/add_article');
+        }
+    }
+   
 }
 ?>

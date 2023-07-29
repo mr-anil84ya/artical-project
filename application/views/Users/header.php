@@ -24,8 +24,11 @@
       <li class="nav-item active">
         <a class="nav-link" href="#">Artical List</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('login/index') ?>">Admin Login</a>
+      <li class="nav-item active">
+        <a class="nav-link" href="<?php echo site_url('login/index') ?>">Login</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="<?php echo site_url('users/register') ?>">Register</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
