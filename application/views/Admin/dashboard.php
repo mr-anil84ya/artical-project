@@ -1,10 +1,11 @@
 <?php include('header.php')?>
 <div class="container">
   <div class="row" style="display:flex;justify-content:end;padding:50px 0px 0px 0px;">
-    <a href="adduser" class="btn btn-lg btn-primary">+Add Articles</a>
+    <a href="<?php echo site_url('admin/adduser') ?>" class="btn btn-lg btn-primary">+Add Articles</a>
   </div>
 </div>
 <!-- <?php print_r($articles);?> -->
+<?php echo $this->db->last_query();?>
 <div class="container">
 <h1>welcome to Admin Dashboard!</h1>
     <?php if($error=$this->session->flashdata('loged_in')): ?>
@@ -30,6 +31,7 @@
     <tr class="bg-primary">
       <th scope="col">#</th>
       <th scope="col">Artical Title</th>
+      <th scope="col">Artical Body</th>
       <th scope="col">Edit</th>
       <th scope="col">Delete</th>
     </tr>
@@ -38,9 +40,13 @@
     <?php if(count($articles)): ?>
     <?php foreach ($articles as $art): ?>
     <tr>
-      <th scope="row">1</th>
+      <th scope="row"><?php echo $art->id; ?></th>
       <td><?php echo $art->article_title; ?></td>
-      <td><a href="#" class="btn btn-primary">Edit</a></td>
+      <td><?php echo $art->article_body; ?></td>
+      <td>
+        <a href="<?php echo site_url('admin/editarticle/').$art->id; ?>" class="btn btn-primary">Edit</a>
+       
+      </td>
       <td>
         <?= 
         form_open('admin/delarticles'),
@@ -58,6 +64,31 @@
     <?php endif; ?>
   </tbody>
 </table>
+
+<!-- <ul class="pagination">
+  <li><a href=""><</a></li>
+  <li><a href="" class="active">1</a></li>
+  <li><a href="">2</a></li>
+  <li><a href="">3</a></li>
+  <li><a href="">></a></li>
+</ul> -->
+<!-- <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#"><</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">></a></li>
+  </ul>
+</nav> -->
+<!-- <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#"><</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">></a></li>
+  </ul> -->
+  <!-- <?php echo $this->pagination->create_links(); ?> -->
 </div>
 </div>
 
