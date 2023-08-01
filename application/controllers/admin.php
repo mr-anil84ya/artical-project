@@ -15,7 +15,7 @@ class admin extends MY_controller
         $this->load->library('pagination');
         $config=[
             'base_url'=>base_url('admin/welcome'),
-            'per_page'=>3,
+            'per_page'=>5,
             'total_rows'=>$this->loginmodel->num_rows(),
             'full_tag_open'=>"<ul class='pagination'>",
             'full_tag_close'=>"</ul>",
